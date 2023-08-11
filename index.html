@@ -17,18 +17,27 @@
 
   <main id="main">
 
-    <section class="login ">
+    <section v-if="!valueStatus" class="box ">
 
       <div class="login__box">
         <h2>Авторизация</h2>
 
         <input v-model="password" :class="verification" type="text">
 
-        <button @click="">войти</button>
+        <button @click="check">войти</button>
       </div>
 
     </section>
 
+    <div class="box" v-if=" valueStatus">
+      <p>Список предметов</p>
+      
+      <ul>
+        <li v-for="(lesson,index) in lessons">{{++index}} {{lesson}}</li>
+      </ul>
+
+      <button @click="valueStatus = !valueStatus">назад</button>
+    </div>
 
 
   </main>
